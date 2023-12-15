@@ -7,7 +7,10 @@ FROM $BASE_CONTAINER
 
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
-RUN spack install cuda@12.2.0
+RUN apt-get install git 
+
+RUN git clone https://github.com/spack/spack.git && \
+    spack install cuda@12.2.0 \
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
