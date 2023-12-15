@@ -13,6 +13,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Changed a bit from original image  
 RUN pip install cuda-python && \
-    pip install --no-cache-dir ai-benchmark && \
+    pip install --no-cache-dir tensorflow && \
+    pip install ai-benchmark && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
