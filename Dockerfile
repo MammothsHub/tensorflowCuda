@@ -25,14 +25,20 @@ COPY exportSpackCuda.sh /home/jovyan
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Changed a bit from original image, trying really hard to use correct verion
-RUN /home/jovyan/exportSpackCuda.sh && \
-    pip install cuda-python && \
-    pip install --no-cache-dir tensorflow && \
-    pip install ai-benchmark && \
+RUN pip install cuda-python && \
+    pip install --no-cache-dir tensorflow && \ 
+    pip install ai-benchmark && \ 
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+# Changed a bit from original image, trying really hard to use correct verion
+#RUN /home/jovyan/exportSpackCuda.sh && \
+#    pip install cuda-python && \
+#    pip install --no-cache-dir tensorflow && \
+#    pip install ai-benchmark && \
+#    fix-permissions "${CONDA_DIR}" && \
+#    fix-permissions "/home/${NB_USER}"
+
 #Export spack's cuda 
-CMD /home/jovyan/exportSpackCuda.sh     
+#CMD /home/jovyan/exportSpackCuda.sh     
     
