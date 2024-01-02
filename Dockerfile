@@ -19,7 +19,7 @@ RUN git clone https://github.com/spack/spack.git && \
 COPY exportSpackCuda.sh /home/jovyan
 
 #Update the permissions for spack's cuda 
-RUN chmod u+x /home/jovyan/exportSpackCuda.sh
+#RUN chmod u+x /home/jovyan/exportSpackCuda.sh
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
