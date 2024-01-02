@@ -16,17 +16,17 @@ RUN git clone https://github.com/spack/spack.git && \
     spack install cuda@12.2.0 
 
 #Copy the commands needed to export spack's cuda
-COPY exportSpackCuda.sh /
+COPY exportSpackCuda.sh /home/jovyan
 
 #Update the permissions for spack's cuda 
-RUN chmod u+x /exportSpackCuda.sh
+RUN chmod u+x /home/jovyan/exportSpackCuda.sh
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Changed a bit from original image, trying really hard to use correct verion
-RUN /exportSpackCuda.sh && \
+RUN /home/jovyan/exportSpackCuda.sh && \
     pip install cuda-python && \
     pip install --no-cache-dir tensorflow && \
     pip install ai-benchmark && \
