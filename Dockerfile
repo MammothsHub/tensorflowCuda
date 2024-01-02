@@ -8,7 +8,7 @@ FROM $BASE_CONTAINER
 LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
 #Install git 
-RUN apt-get install --no-install-recommends -y git
+#RUN apt-get install --no-install-recommends -y git
 
 #Clone into spack and install cuda 12.2
 RUN git clone https://github.com/spack/spack.git && \
