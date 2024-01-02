@@ -18,27 +18,31 @@ RUN git clone https://github.com/spack/spack.git && \
 #Copy the commands needed to export spack's cuda
 COPY exportSpackCuda.sh /home/jovyan
 
+USER root 
+
 #Update the permissions for spack's cuda 
-#RUN chmod u+x /home/jovyan/exportSpackCuda.sh
+RUN chmod u+x /home/jovyan/exportSpackCuda.sh
+
+USER ${NB_UID}
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN pip install cuda-python && \
-    pip install --no-cache-dir tensorflow && \ 
-    pip install ai-benchmark && \ 
-    fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
-
-# Changed a bit from original image, trying really hard to use correct verion
-#RUN /home/jovyan/exportSpackCuda.sh && \
-#    pip install cuda-python && \
-#    pip install --no-cache-dir tensorflow && \
-#    pip install ai-benchmark && \
+#RUN pip install cuda-python && \
+#    pip install --no-cache-dir tensorflow && \ 
+#    pip install ai-benchmark && \ 
 #    fix-permissions "${CONDA_DIR}" && \
 #    fix-permissions "/home/${NB_USER}"
 
+# Changed a bit from original image, trying really hard to use correct verion
+RUN /home/jovyan/exportSpackCuda.sh && \
+    pip install cuda-python && \
+    pip install --no-cache-dir tensorflow && \
+    pip install ai-benchmark && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
 #Export spack's cuda 
-#CMD /home/jovyan/exportSpackCuda.sh     
+CMD /home/jovyan/exportSpackCuda.sh     
     
