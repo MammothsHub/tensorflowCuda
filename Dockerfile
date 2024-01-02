@@ -12,7 +12,7 @@ LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 
 #Clone into spack and install cuda 12.2
 RUN git clone https://github.com/spack/spack.git && \
-    spack/share/spack/setup-env.sh \
+    spack/share/spack/setup-env.sh && \
     spack install cuda@12.2.0 
 
 #Copy the commands needed to export spack's cuda
