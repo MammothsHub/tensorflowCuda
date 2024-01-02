@@ -34,5 +34,5 @@ RUN /home/jovyan/exportSpackCuda.sh && \
     fix-permissions "/home/${NB_USER}"
 
 #Export spack's cuda 
-CMD /exportSpackCuda.sh     
+CMD /home/jovyan/exportSpackCuda.sh     
     
