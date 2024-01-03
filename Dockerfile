@@ -45,5 +45,5 @@ RUN ./exportSpackCuda.sh && \
     fix-permissions "/home/${NB_USER}"
 
 #Export spack's cuda 
-CMD ./exportSpackCuda.sh     
+#CMD ./exportSpackCuda.sh     
     
