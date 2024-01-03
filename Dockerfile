@@ -46,5 +46,5 @@ RUN source /exportSpackCuda.sh && \
     fix-permissions "/home/${NB_USER}" 
 
 #Export spack's cuda on container boot 
-CMD . /exportSpackCuda.sh     
+CMD /exportSpackCuda.sh     
     
