@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /spack/share/spack/setup-env.sh 
+. /spack/share/spack/setup-env.sh 
     spack load cuda 
     export CUDA_DIR=$CUDA_HOME  
     export CUDA_PATH=$CUDA_HOME 
