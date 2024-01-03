@@ -21,7 +21,8 @@ RUN echo "source /spack/share/spack/setup-env.sh && spack load cuda && export CU
 #Where are we? 
 RUN echo $PWD
 
-RUN chmod ugo+wrx /exportSpackCuda.sh
+RUN chmod ugo+wrx /exportSpackCuda.sh && \
+    rm -r -f /home/jovyan/.spack 
 
 USER ${NB_UID}
 
@@ -34,9 +35,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Changed a bit from original image, trying really hard to use correct verion
 RUN /exportSpackCuda.sh && \
     pip install ai-benchmark && \
-    pip install --no-cache-dir tensorflow && \
+    pip install --no-cache-dir tensorflow && \ 
     fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}"
+    fix-permissions "/home/${NB_USER}" 
 
 #Export spack's cuda 
 #CMD /exportSpackCuda.sh     
