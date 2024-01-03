@@ -39,12 +39,18 @@ LABEL maintainer="Jupyter Project <jupyter@googlegroups.com>"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Now export spack's cuda and install packages 
-RUN source /exportSpackCuda.sh && \
-    pip install --upgrade pip && \
-    pip install --no-cache-dir tensorflow-gpu[and-cuda] && \ 
+#RUN source /exportSpackCuda.sh && \
+#    pip install --upgrade pip && \
+#    pip install --no-cache-dir tensorflow-gpu[and-cuda] && \ 
+#    pip install new-ai-benchmark && \
+#    fix-permissions "${CONDA_DIR}" && \
+#    fix-permissions "/home/${NB_USER}" 
+
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir tensorflow-gpu[and-cuda] && \
     pip install new-ai-benchmark && \
     fix-permissions "${CONDA_DIR}" && \
-    fix-permissions "/home/${NB_USER}" 
+    fix-permissions "/home/${NB_USER}"
 
 #Export spack's cuda on container boot 
 #CMD /exportSpackCuda.sh     
