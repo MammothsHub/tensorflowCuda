@@ -13,7 +13,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 #Now upgrade pip and install tensorflow[and-cuda] and new-ai-benchmark
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir tensorflow-gpu[and-cuda] && \
+    pip install --no-cache-dir tensorflow[and-cuda] && \
     pip install new-ai-benchmark && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
